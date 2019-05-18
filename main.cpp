@@ -1,7 +1,9 @@
 #include <iostream>
+// setting namespace
 using namespace std;
 
 int main() {
+    // printing a menu for the user
     cout << "Production Line Tracker\n" << endl;
     cout << "1. Add Employee Account" << endl;
     cout << "2. Add Music Player" << endl;
