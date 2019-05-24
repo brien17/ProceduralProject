@@ -1,6 +1,7 @@
 /**
- * @file ProceduralProject
- * @brief This file is production management software made for an imaginary company as an assignment for my COP 2001
+ * @file main.cpp
+ * @brief The whole media production project.
+ * This file is production management software made for an imaginary company as an assignment for my COP 2001
  * course.
  * @author Cameron Brien
  * @bug potential index error at line 120
@@ -120,17 +121,28 @@ void produceItems() {
     //closing file
     catalog.close();
 
-    //prompting user
-    std::cout << "Select an available item" << std::endl;
-    //displaying available items
-    for (int i = 0; i < items.size(); i++) {
-        std::cout << i + 1 << ". " << items[i] << std::endl;
+    //declaring input variable
+    int itemSelected = 1;
+
+    //ensuring good input
+    //entering letters makes it crash
+    bool goodInput = false;
+    while (goodInput == false) {
+        //prompting user
+        std::cout << "Select an available item" << std::endl;
+        //displaying available items
+        for (int i = 0; i < items.size(); i++) {
+            std::cout << i + 1 << ". " << items[i] << std::endl;
+        }
+
+        //getting input from user
+        std::cin >> itemSelected;
+        if (itemSelected <= items.size() && itemSelected > 0) {
+            goodInput = true;
+        } else {
+            std::cout << "Input not understood" << std::endl;
+        }
     }
-
-    //getting input from user
-    int itemSelected;
-    std::cin >> itemSelected;
-
     // potential index out of bounds here
     //selecting item based on user input
     std::string itemToProduce = items[itemSelected - 1]; // subtracting 1 because zero index
@@ -154,7 +166,7 @@ void produceItems() {
     //opening file
     std::ofstream produced;
     produced.open("produced.txt", std::ios_base::app);
-
+    
     //looping to output production number and serial number and write to file
     for (int i = 1; i <= numProduced; i++) {
         //creating production number
@@ -166,9 +178,8 @@ void produceItems() {
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
-        produced << "Manufacturer: " << manufacturer << ", Item name: " << itemName << ", Item Code: " <<
-                 itemTypeCode << ", Production Number: " << productionNumber << ", Serial Number: " << serialNumber
-                 << "\n";
+        produced << "," << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << productionNumber
+        << ","  << serialNumber<< "\n";
     }
 
     //closing file
