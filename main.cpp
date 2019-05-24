@@ -91,6 +91,8 @@ void produceItems() {
     std::cout << "Here is a list of items that are available for production" << std::endl;
 
     //creating vector to store item information
+    //credit: jrohde
+    //http://www.cplusplus.com/forum/beginner/17845/
     std::vector<std::string>  items;
 
     //creating placeholder for file data
