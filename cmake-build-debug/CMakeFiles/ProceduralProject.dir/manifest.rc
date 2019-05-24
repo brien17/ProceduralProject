@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/cam12/CLionProjects/ProceduralProject/cmake-build-debug/CMakeFiles/ProceduralProject.dir/embed.manifest"

@@ -1,0 +1,3 @@
+C:/Users/cam12/CLionProjects/ProceduralProject/cmake-build-debug/CMakeFiles/ProceduralProject.dir
+C:/Users/cam12/CLionProjects/ProceduralProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/cam12/CLionProjects/ProceduralProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
