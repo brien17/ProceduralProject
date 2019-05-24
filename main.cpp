@@ -15,9 +15,13 @@
 
 //prototypes
 void showMenu();
+
 void getInput();
+
 void addItem();
+
 void produceItems();
+
 std::string addLeadingZeros(int num);
 
 /** The main method for my program that runs the other methods.
@@ -93,7 +97,7 @@ void produceItems() {
     //creating vector to store item information
     //credit: jrohde
     //http://www.cplusplus.com/forum/beginner/17845/
-    std::vector<std::string>  items;
+    std::vector<std::string> items;
 
     //creating placeholder for file data
     std::string line;
@@ -119,8 +123,8 @@ void produceItems() {
     //prompting user
     std::cout << "Select an available item" << std::endl;
     //displaying available items
-    for (int i = 0; i < items.size(); i++){
-        std::cout << i + 1 << ". " <<items[i] << std::endl;
+    for (int i = 0; i < items.size(); i++) {
+        std::cout << i + 1 << ". " << items[i] << std::endl;
     }
 
     //getting input from user
@@ -163,7 +167,8 @@ void produceItems() {
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
         produced << "Manufacturer: " << manufacturer << ", Item name: " << itemName << ", Item Code: " <<
-        itemTypeCode << ", Production Number: " << productionNumber << ", Serial Number: " << serialNumber << "\n";
+                 itemTypeCode << ", Production Number: " << productionNumber << ", Serial Number: " << serialNumber
+                 << "\n";
     }
 
     //closing file
