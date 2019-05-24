@@ -225,6 +225,8 @@ void addItem() {
                 break;
             default:
                 std::cout << "Input not understood" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 
