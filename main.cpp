@@ -163,27 +163,85 @@ void produceItems() {
     int numProduced;
     std::cin >> numProduced;
 
+    //creating a string to hold the first part of a serial number to match with others that have already been produced
+    std::string searchString = manufacturer.substr(0,3) + itemTypeCode;
+
+    //reading file
+    std::ifstream producedIn;
+    producedIn.open("produced.txt");
+
+    //creating a variable to hold the serial number of the last of the created products
+    std::string found = "not found";
+
+    //creating a variable to hold number of the current line
+    unsigned int currentLine = 0;
+
+    //looping to find the last occurance of the serial number being searched for
+    while(getline(producedIn, line)){
+        currentLine++;
+        //checking if the line contains the searched for serial number
+        if(line.find(searchString, 0) != std::string::npos){
+            //setting the line matching the looked for serial number to found
+            found = line;
+        }
+    }
+
+    int startingNumber;
+    int endingNumber;
+
+    if(found == "not found"){
+        //opening file
+        std::ofstream producedOut;
+        producedOut.open("produced.txt", std::ios_base::app);
+
+        producedOut << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << 0
+                    << ","  << searchString + "00000" << "\n";
+        //outputting production number
+        std::cout << "Production Number: " << 0;
+        //creating serial number
+        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + "00000";
+        //outputting production number
+        std::cout << " Serial Number: " << serialNumber << std::endl;
+
+        startingNumber = 0;
+
+        endingNumber = numProduced - 1;
+    }
+
+    else {
+        //creating a string stream with just the last 5 digits of the serial number
+        std::stringstream startingNumberStream(found.substr(found.length() - 5));
+
+        //storing that stream in the variable starting number
+        startingNumberStream >> startingNumber;
+
+        endingNumber = startingNumber + numProduced;
+    }
+
+    //closing stream
+    producedIn.close();
+
     //opening file
-    std::ofstream produced;
-    produced.open("produced.txt", std::ios_base::app);
-    
+    std::ofstream producedOut;
+    producedOut.open("produced.txt", std::ios_base::app);
+
     //looping to output production number and serial number and write to file
-    for (int i = 1; i <= numProduced; i++) {
+    for (int i = startingNumber + 1; i <= endingNumber; i++) {
         //creating production number
-        int productionNumber = i;
+        int productionNumber = i + 1;
         //outputting production number
         std::cout << "Production Number: " << productionNumber;
         //creating serial number
-        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(productionNumber);
+        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i);
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
-        produced << "," << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << productionNumber
+        producedOut << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << productionNumber
         << ","  << serialNumber<< "\n";
     }
 
     //closing file
-    produced.close();
+    producedOut.close();
 }
 
 /**

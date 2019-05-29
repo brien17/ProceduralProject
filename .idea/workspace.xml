@@ -11,9 +11,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="Fixed potential infinite loop in addItems">
+    <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/vc140.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/catalog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/produced.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -37,35 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="4" />
-              <folding>
-                <element signature="e#473#554#0" />
-                <element signature="e#473#731#0" />
-                <element signature="e#733#813#0" />
-                <element signature="e#733#1135#0" />
-                <element signature="e#1137#1276#0" />
-                <element signature="e#1137#2291#0" />
-                <element signature="e#2293#2389#0" />
-                <element signature="e#5390#5468#0" />
-                <element signature="e#5390#7424#0" />
-                <element signature="e#7426#7671#0" />
-                <element signature="e#7426#8209#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmake-build-debug/produced.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmake-build-debug/catalog.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            <state relative-caret-position="172">
+              <caret line="229" column="36" lean-forward="true" selection-start-line="229" selection-start-column="36" selection-end-line="229" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -83,8 +61,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cmake-build-debug/produced.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/catalog.txt" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/produced.txt" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
@@ -100,8 +78,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="362" />
-    <option name="y" value="-14" />
+    <option name="x" value="361" />
+    <option name="y" value="-15" />
     <option name="width" value="1530" />
     <option name="height" value="980" />
   </component>
@@ -114,6 +92,15 @@
       <pane id="ProjectPane">
         <subPane>
           <expand>
+            <path>
+              <item name="ProceduralProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProceduralProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProceduralProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProceduralProject" type="462c0819:PsiDirectoryNode" />
+              <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
+            </path>
             <path>
               <item name="ProceduralProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
@@ -167,7 +154,8 @@
       <updated>1557934382555</updated>
       <workItem from="1557934388348" duration="3786000" />
       <workItem from="1558531809345" duration="28327000" />
-      <workItem from="1558707674800" duration="4493000" />
+      <workItem from="1558707674800" duration="6100000" />
+      <workItem from="1559088214599" duration="1871000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1557934701054</created>
@@ -232,22 +220,29 @@
       <option name="project" value="LOCAL" />
       <updated>1558708171020</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated comments">
+      <created>1558712865595</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558712865595</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36606000" />
+    <option name="totallyTimeSpent" value="40084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10469799" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1328859" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30311614" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -314,7 +309,8 @@
     <MESSAGE value="Added functionality for produce items and add new product." />
     <MESSAGE value="Added more comments." />
     <MESSAGE value="Fixed potential infinite loop in addItems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed potential infinite loop in addItems" />
+    <MESSAGE value="Updated comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -442,6 +438,9 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/produced.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/catalog.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -449,26 +448,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/produced.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="4" />
-          <folding>
-            <element signature="e#473#554#0" />
-            <element signature="e#473#731#0" />
-            <element signature="e#733#813#0" />
-            <element signature="e#733#1135#0" />
-            <element signature="e#1137#1276#0" />
-            <element signature="e#1137#2291#0" />
-            <element signature="e#2293#2389#0" />
-            <element signature="e#5390#5468#0" />
-            <element signature="e#5390#7424#0" />
-            <element signature="e#7426#7671#0" />
-            <element signature="e#7426#8209#0" />
-          </folding>
+        <state relative-caret-position="172">
+          <caret line="229" column="36" lean-forward="true" selection-start-line="229" selection-start-column="36" selection-end-line="229" selection-end-column="36" />
         </state>
       </provider>
     </entry>

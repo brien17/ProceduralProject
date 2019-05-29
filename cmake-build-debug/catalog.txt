@@ -1,2 +1,0 @@
-apple,ipod,MM
-microsoft,zune,AM
