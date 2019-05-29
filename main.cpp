@@ -54,6 +54,8 @@ void showMenu() {
  * method based on the input.
  */
 void getInput() {
+    //prompting the user
+    std::cout << "Please select an option" << std::endl;
     //declaring variable for user input
     int userInput;
     //declaring boolean to track if the user is done with the program
@@ -94,51 +96,53 @@ void produceItems() {
     //greeting user
     std::cout << "Welcome to the production tab" << std::endl;
     std::cout << "Here is a list of items that are available for production" << std::endl;
+    //make it so that it quits or goes to add item tab when there are no items to be produced
 
     //creating vector to store item information
     //credit: jrohde
     //http://www.cplusplus.com/forum/beginner/17845/
     std::vector<std::string> items;
-
-    //creating placeholder for file data
-    std::string line;
-    //reading file
-    std::ifstream catalog("catalog.txt");
-
-    //checking if file is open
-    if (catalog.is_open()) {
-        //declaring line counter
-        int lineCounter = 0;
-        //while there are more lines, takes the line and stores it as variable line
-        while (getline(catalog, line)) {
-            //storing line in array
-            items.push_back(line);
-            //incrementing counter
-            lineCounter++;
-        }
-    }
-
-    //closing file
-    catalog.close();
-
-    //declaring input variable
-    int itemSelected = 1;
-
-    //ensuring good input
-    //entering letters makes it crash
+    int itemSelected = 0;
     bool goodInput = false;
     while (goodInput == false) {
+        //making sure the vector is clear
+        items.clear();
+        //creating placeholder for file data
+        std::string line;
+        //reading file
+        std::ifstream catalog("catalog.txt");
+
+        //checking if file is open
+        if (catalog.is_open()) {
+            //declaring line counter
+            int lineCounter = 0;
+            //while there are more lines, takes the line and stores it as variable line
+            while (getline(catalog, line)) {
+                //storing line in array
+                items.push_back(line);
+                //incrementing counter
+                lineCounter++;
+            }
+        }
+
+        //closing file
+        catalog.close();
+
+        //ensuring good input
+        //entering letters makes it crash
         //prompting user
-        std::cout << "Select an available item" << std::endl;
+        std::cout << "Select an available item or add an item to be produced" << std::endl;
         //displaying available items
         for (int i = 0; i < items.size(); i++) {
             std::cout << i + 1 << ". " << items[i] << std::endl;
         }
-
+        std::cout << items.size() + 1 << ". " << "Add new item";
         //getting input from user
         std::cin >> itemSelected;
         if (itemSelected <= items.size() && itemSelected > 0) {
             goodInput = true;
+        } else if (itemSelected == items.size() + 1) {
+            addItem();
         } else {
             std::cout << "Input not understood" << std::endl;
         }
@@ -170,6 +174,9 @@ void produceItems() {
     std::ifstream producedIn;
     producedIn.open("produced.txt");
 
+    //creating placeholder for file data
+    std::string line;
+
     //creating a variable to hold the serial number of the last of the created products
     std::string found = "not found";
 
@@ -197,13 +204,13 @@ void produceItems() {
         producedOut << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << 0
                     << ","  << searchString + "00000" << "\n";
         //outputting production number
-        std::cout << "Production Number: " << 0;
+        std::cout << "Production Number: " << 1;
         //creating serial number
         std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + "00000";
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
 
-        startingNumber = 0;
+        startingNumber = 1;
 
         endingNumber = numProduced - 1;
     }
@@ -228,7 +235,7 @@ void produceItems() {
     //looping to output production number and serial number and write to file
     for (int i = startingNumber + 1; i <= endingNumber; i++) {
         //creating production number
-        int productionNumber = i + 1;
+        int productionNumber = i;
         //outputting production number
         std::cout << "Production Number: " << productionNumber;
         //creating serial number
@@ -339,4 +346,3 @@ std::string addLeadingZeros(int num) {
     //returning the result
     return finalString;
 }
-
