@@ -23,6 +23,14 @@ void addItem();
 
 void produceItems();
 
+void production_statistics();
+
+void show_statistics_menu();
+
+void get_production_from_serial();
+
+void show_available_products_sorted();
+
 std::string addLeadingZeros(int num);
 
 /** The main method for my program that runs the other methods.
@@ -31,7 +39,7 @@ std::string addLeadingZeros(int num);
  */
 int main() {
     //greeting the user
-    std::cout << "Welcome to the Production Line Tracker\n" << std::endl;
+    std::cout << "Welcome to the Production Line Tracker" << std::endl;
     //getting input from the user
     getInput();
     return 0;
@@ -78,7 +86,7 @@ void getInput() {
                 addItem();
                 break;
             case 4:
-                std::cout << "Display Production Statistics Stub" << std::endl;
+                production_statistics();
                 break;
             case 5:
                 exit = true;
@@ -102,15 +110,18 @@ void produceItems() {
     //credit: jrohde
     //http://www.cplusplus.com/forum/beginner/17845/
     std::vector<std::string> items;
+
+    //ensuring good input
     unsigned int itemSelected = 0;
     bool goodInput = false;
+    //looping until good input is recieved
     while (goodInput == false) {
         //making sure the vector is clear
         items.clear();
         //creating placeholder for file data
         std::string line;
         //reading file
-        std::ifstream catalog("catalog.txt");
+        std::ifstream catalog("catalog.csv");
 
         //checking if file is open
         if (catalog.is_open()) {
@@ -128,7 +139,6 @@ void produceItems() {
         //closing file
         catalog.close();
 
-        //ensuring good input
         //entering letters makes it crash
         //prompting user
         std::cout << "Select an available item or add an item to be produced" << std::endl;
@@ -141,6 +151,7 @@ void produceItems() {
 
         //getting input from user
         std::cin >> itemSelected;
+        //checking if the user selection is in the array, is add new item, or is bad input
         if (itemSelected <= items.size() && itemSelected > 0) {
             goodInput = true;
         } else if (itemSelected == items.size() + 1) {
@@ -149,7 +160,7 @@ void produceItems() {
             std::cout << "Input not understood" << std::endl;
         }
     }
-    // potential index out of bounds here
+
     //selecting item based on user input
     std::string itemToProduce = items[itemSelected - 1]; // subtracting 1 because zero index
 
@@ -169,12 +180,34 @@ void produceItems() {
     int numProduced;
     std::cin >> numProduced;
 
-    //creating a string to hold the first part of a serial number to match with others that have already been produced
-    std::string searchString = manufacturer.substr(0,3) + itemTypeCode;
+    //reading file
+    std::ifstream production_number_in;
+    production_number_in.open("production_number.txt");
+
+    //creating a string to store the data temporarily
+    std::string production_number_string;
+
+    //getting data as a string
+    getline(production_number_in, production_number_string);
+
+    //creating a variable to hold production number
+    int production_number = 1;
+
+    //closing file
+    production_number_in.close();
+
+    //creating a string stream of the production number
+    std::stringstream production_number_string_stream(production_number_string);
+
+    //storing that stream in the variable production number
+    production_number_string_stream >> production_number;
 
     //reading file
     std::ifstream producedIn;
-    producedIn.open("produced.txt");
+    producedIn.open("produced.csv");
+
+    //creating a string to hold the first part of a serial number to match with others that have already been produced
+    std::string searchString = itemTypeCode;
 
     //creating placeholder for file data
     std::string line;
@@ -186,10 +219,10 @@ void produceItems() {
     unsigned int currentLine = 0;
 
     //looping to find the last occurance of the serial number being searched for
-    while(getline(producedIn, line)){
+    while (getline(producedIn, line)) {
         currentLine++;
         //checking if the line contains the searched for serial number
-        if(line.find(searchString, 0) != std::string::npos){
+        if (line.find(searchString, 0) != std::string::npos) {
             //setting the line matching the looked for serial number to found
             found = line;
         }
@@ -198,26 +231,12 @@ void produceItems() {
     int startingNumber;
     int endingNumber;
 
-    if(found == "not found"){
-        //opening file
-        std::ofstream producedOut;
-        producedOut.open("produced.txt", std::ios_base::app);
+    if (found == "not found") {
 
-        producedOut << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << 0
-                    << ","  << searchString + "00000" << "\n";
-        //outputting production number
-        std::cout << "Production Number: " << 1;
-        //creating serial number
-        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + "00000";
-        //outputting production number
-        std::cout << " Serial Number: " << serialNumber << std::endl;
-
-        startingNumber = 1;
+        startingNumber = 0;
 
         endingNumber = numProduced;
-    }
-
-    else {
+    } else {
         //creating a string stream with just the last 5 digits of the serial number
         std::stringstream startingNumberStream(found.substr(found.length() - 5));
 
@@ -232,25 +251,33 @@ void produceItems() {
 
     //opening file
     std::ofstream producedOut;
-    producedOut.open("produced.txt", std::ios_base::app);
+    producedOut.open("produced.csv", std::ios_base::app);
+
+    //opening file
+    std::ofstream production_number_out;
+    production_number_out.open("production_number.txt");
 
     //looping to output production number and serial number and write to file
     for (int i = startingNumber + 1; i <= endingNumber; i++) {
-        //creating production number
-        int productionNumber = i;
         //outputting production number
-        std::cout << "Production Number: " << productionNumber;
+        std::cout << "Production Number: " << production_number;
         //creating serial number
         std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i - 1);
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
-        producedOut << manufacturer << ","  << itemName << ","   <<itemTypeCode << ","  << productionNumber
-        << ","  << serialNumber<< "\n";
+        producedOut << manufacturer << "," << itemName << "," << itemTypeCode << "," << production_number
+                    << "," << serialNumber << "\n";
+        //iterating production number
+        ++production_number;
     }
+
+    //writing to file
+    production_number_out << production_number;
 
     //closing file
     producedOut.close();
+    production_number_out.close();
 }
 
 /**
@@ -312,7 +339,7 @@ void addItem() {
     std::ofstream myFile;
 
     //opening file
-    myFile.open("catalog.txt", std::ios_base::app);
+    myFile.open("catalog.csv", std::ios_base::app);
 
     //writing to file
     myFile << manufacturer << "," << productName << "," << itemTypeCode << "\n";
@@ -323,6 +350,90 @@ void addItem() {
     //providing feedback to user
     std::cout << "Item has been saved" << std::endl;
 
+
+}
+
+void production_statistics() {
+    //declaring variable for user input
+    int userInput;
+    //declaring boolean to track if the user is done with the program
+    bool exit = false;
+    //looping to get input from the user
+    while (exit == false) {
+        //prompting the user
+        std::cout << "Welcome to the production statistics tab" << std::endl;
+        std::cout << "Please select an option to continue" << std::endl;
+        //display a menu for the user showing the options
+        show_statistics_menu();
+        //reading input from cin
+        std::cin >> userInput;
+        //using input to select menu options
+        switch (userInput) {
+            case 1:
+                get_production_from_serial();
+                break;
+            case 2:
+                show_available_products_sorted();
+                break;
+            case 3:
+                exit = true;
+                break;
+            default:
+                std::cout << "Not a valid selection" << std::endl;
+        }
+    }
+}
+
+/**
+ * This method shows the statistics sub-menu for the user to make selections from.
+ */
+void show_statistics_menu() {
+    std::cout << "1. Get Production Number From Serial Number" << std::endl;
+    std::cout << "2. Show Available Products" << std::endl;
+    std::cout << "3. Exit" << std::endl;
+}
+
+/**
+ * This method prompts the user for a serial number and then prints the production number for that serial number to the
+ * console.
+ */
+void get_production_from_serial() {
+    //creating a variable to hold the user input
+    std::string serial_number = "Serial number not found";
+
+    //prompting the user
+    std::cout << "Please enter a serial number" << std::endl;
+
+    //assigning their input to the variable
+    std::cin >> serial_number;
+
+    //reading file
+    std::ifstream produced_in;
+    produced_in.open("produced.csv");
+
+    //creating placeholder for file data
+    std::string line;
+
+    //creating a variable to hold number of the current line
+    unsigned int production_number = 0;
+
+    //looping to find the serial number in the produced file
+    while (getline(produced_in, line)) {
+        //iterating the counter variable
+        ++production_number;
+        //checking if the line contains the searched for serial number
+        if (line.find(serial_number, 0) != std::string::npos) {
+            //breaking out of the loop if it matches
+            break;
+        }
+    }
+    std::cout << "The production number is, " << production_number << std::endl;
+}
+
+/**
+ * This method prints a sorted list of all of the products that are able to printed to the console.
+ */
+void show_available_products_sorted() {
 
 }
 
