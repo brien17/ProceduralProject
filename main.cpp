@@ -13,6 +13,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 
 //prototypes
 void showMenu();
@@ -353,6 +354,9 @@ void addItem() {
 
 }
 
+/**
+ * This method gets input from the user and allows them to run other production statistics methods
+ */
 void production_statistics() {
     //declaring variable for user input
     int userInput;
@@ -428,13 +432,44 @@ void get_production_from_serial() {
         }
     }
     std::cout << "The production number is, " << production_number << std::endl;
+
+    produced_in.close();
 }
 
 /**
  * This method prints a sorted list of all of the products that are able to printed to the console.
  */
 void show_available_products_sorted() {
+    //printing to user
+    std::cout << "Available items" << std::endl;
 
+    //reading file
+    std::ifstream catalog_in;
+    catalog_in.open("catalog.csv");
+
+    //creating a vector to hold the product names
+    std::vector<std::string> product_line_names;
+
+    //creating a temporary variable to hold the line
+    std::string line;
+
+    //looping over the catalog and adding the name to the vector
+    while(getline(catalog_in, line)){
+        //creating a stream for the line
+        std::stringstream stream(line);
+        //getting the manufacturer
+        getline(stream, line, ',');
+        //getting the product name
+        getline(stream, line, ',');
+        product_line_names.push_back(line);
+        //getting the item type code
+        getline(stream, line, ',');
+    }
+    //sorting
+    sort(product_line_names.begin(), product_line_names.end());
+    //printing items
+    for (std::string s : product_line_names)
+        std::cout << s << "\n";
 }
 
 /**
