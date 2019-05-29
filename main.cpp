@@ -54,14 +54,14 @@ void showMenu() {
  * method based on the input.
  */
 void getInput() {
-    //prompting the user
-    std::cout << "Please select an option" << std::endl;
     //declaring variable for user input
     int userInput;
     //declaring boolean to track if the user is done with the program
     bool exit = false;
     //looping to get input from the user
     while (exit == false) {
+        //prompting the user
+        std::cout << "Please select an option" << std::endl;
         //display a menu for the user showing the options
         showMenu();
         //reading input from cin
@@ -102,7 +102,7 @@ void produceItems() {
     //credit: jrohde
     //http://www.cplusplus.com/forum/beginner/17845/
     std::vector<std::string> items;
-    int itemSelected = 0;
+    unsigned int itemSelected = 0;
     bool goodInput = false;
     while (goodInput == false) {
         //making sure the vector is clear
@@ -133,10 +133,12 @@ void produceItems() {
         //prompting user
         std::cout << "Select an available item or add an item to be produced" << std::endl;
         //displaying available items
-        for (int i = 0; i < items.size(); i++) {
+        for (unsigned int i = 0; i < items.size(); i++) {
             std::cout << i + 1 << ". " << items[i] << std::endl;
         }
-        std::cout << items.size() + 1 << ". " << "Add new item";
+        //displaying the option to add new items
+        std::cout << items.size() + 1 << ". " << "Add new item" << std::endl;
+
         //getting input from user
         std::cin >> itemSelected;
         if (itemSelected <= items.size() && itemSelected > 0) {
@@ -212,7 +214,7 @@ void produceItems() {
 
         startingNumber = 1;
 
-        endingNumber = numProduced - 1;
+        endingNumber = numProduced;
     }
 
     else {
@@ -239,7 +241,7 @@ void produceItems() {
         //outputting production number
         std::cout << "Production Number: " << productionNumber;
         //creating serial number
-        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i);
+        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i - 1);
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
