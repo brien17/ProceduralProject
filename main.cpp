@@ -244,6 +244,9 @@ void produceItems() {
         //storing that stream in the variable starting number
         startingNumberStream >> startingNumber;
 
+        //adding one to starting number
+        startingNumber++;
+        //
         endingNumber = startingNumber + numProduced;
     }
 
@@ -259,11 +262,11 @@ void produceItems() {
     production_number_out.open("production_number.txt");
 
     //looping to output production number and serial number and write to file
-    for (int i = startingNumber + 1; i <= endingNumber; i++) {
+    for (int i = startingNumber; i < endingNumber; i++) {
         //outputting production number
         std::cout << "Production Number: " << production_number;
         //creating serial number
-        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i - 1);
+        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i);
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file

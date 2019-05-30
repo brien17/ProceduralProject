@@ -11,8 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="added show_available_products_sorted">
+    <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProceduralProject.dir/vc140.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -33,11 +38,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="444" selection-start-line="444" selection-end-line="444" />
+            <state relative-caret-position="1485">
+              <caret line="248" column="10" selection-start-line="248" selection-start-column="10" selection-end-line="248" selection-end-column="10" />
               <folding>
                 <element signature="e#503#584#0" />
                 <element signature="e#503#761#0" />
@@ -51,11 +56,23 @@
                 <element signature="e#11017#11028#0" />
                 <element signature="e#10831#10867#0" />
                 <element signature="e#11978#11989#0" />
+                <element signature="e#12050#12350#0" />
                 <element signature="e#12238#12249#0" />
+                <element signature="e#12227#13343#0" />
                 <element signature="e#12430#12441#0" />
+                <element signature="e#13463#13505#1" />
                 <element signature="e#7852#8097#0" />
                 <element signature="e#10134#10671#1" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/produced.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -175,7 +192,7 @@
       <workItem from="1557934388348" duration="3786000" />
       <workItem from="1558531809345" duration="28327000" />
       <workItem from="1558707674800" duration="6100000" />
-      <workItem from="1559088214599" duration="17726000" />
+      <workItem from="1559088214599" duration="18922000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1557934701054</created>
@@ -275,11 +292,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559156683108</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added show_available_products_sorted">
+      <created>1559161075971</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1559161075971</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55939000" />
+    <option name="totallyTimeSpent" value="57135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -289,13 +313,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30311614" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25070822" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.32152975" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32152975" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3286119" />
@@ -506,17 +530,10 @@
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/production_number.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/produced.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="444" selection-start-line="444" selection-end-line="444" />
+        <state relative-caret-position="1485">
+          <caret line="248" column="10" selection-start-line="248" selection-start-column="10" selection-end-line="248" selection-end-column="10" />
           <folding>
             <element signature="e#503#584#0" />
             <element signature="e#503#761#0" />
@@ -530,11 +547,21 @@
             <element signature="e#11017#11028#0" />
             <element signature="e#10831#10867#0" />
             <element signature="e#11978#11989#0" />
+            <element signature="e#12050#12350#0" />
             <element signature="e#12238#12249#0" />
+            <element signature="e#12227#13343#0" />
             <element signature="e#12430#12441#0" />
+            <element signature="e#13463#13505#1" />
             <element signature="e#7852#8097#0" />
             <element signature="e#10134#10671#1" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/produced.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="27" />
         </state>
       </provider>
     </entry>
