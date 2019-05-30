@@ -457,7 +457,7 @@ void show_available_products_sorted() {
     std::string line;
 
     //looping over the catalog and adding the name to the vector
-    while(getline(catalog_in, line)){
+    while (getline(catalog_in, line)) {
         //creating a stream for the line
         std::stringstream stream(line);
         //getting the manufacturer
