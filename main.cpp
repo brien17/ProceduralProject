@@ -4,7 +4,8 @@
  * This file is production management software made for an imaginary company as an assignment for my COP 2001
  * course.
  * @author Cameron Brien
- * @bug potential index error at line 120
+ * @bug typing letters at menus creates infinite loop, cannot put spaces in 
+ * manufacturer or item name 
  */
 
 #include <iostream>
@@ -16,13 +17,13 @@
 #include <algorithm>
 
 //prototypes
-void showMenu();
+void show_menu();
 
-void getInput();
+void get_input();
 
-void addItem();
+void add_item();
 
-void produceItems();
+void produce_items();
 
 void production_statistics();
 
@@ -32,7 +33,7 @@ void get_production_from_serial();
 
 void show_available_products_sorted();
 
-std::string addLeadingZeros(int num);
+std::string add_leading_zeros(int num);
 
 /** The main method for my program that runs the other methods.
  *
@@ -42,14 +43,14 @@ int main() {
     //greeting the user
     std::cout << "Welcome to the Production Line Tracker" << std::endl;
     //getting input from the user
-    getInput();
+    get_input();
     return 0;
 }
 
 /**
  * This method shows the main menu for the user to make selections from.
  */
-void showMenu() {
+void show_menu() {
     // printing a menu for the user
     std::cout << "1. Produce Items" << std::endl;
     std::cout << "2. Add Employee Account" << std::endl;
@@ -62,9 +63,9 @@ void showMenu() {
  * This method gets input from the user and returns the appropriate response or calls the appropriate
  * method based on the input.
  */
-void getInput() {
+void get_input() {
     //declaring variable for user input
-    int userInput;
+    int user_input;
     //declaring boolean to track if the user is done with the program
     bool exit = false;
     //looping to get input from the user
@@ -72,19 +73,19 @@ void getInput() {
         //prompting the user
         std::cout << "Please select an option" << std::endl;
         //display a menu for the user showing the options
-        showMenu();
+        show_menu();
         //reading input from cin
-        std::cin >> userInput;
+        std::cin >> user_input;
         //using input to select menu options
-        switch (userInput) {
+        switch (user_input) {
             case 1:
-                produceItems();
+                produce_items();
                 break;
             case 2:
                 std::cout << "Add Employee Account Stub" << std::endl;
                 break;
             case 3:
-                addItem();
+                add_item();
                 break;
             case 4:
                 production_statistics();
@@ -101,7 +102,7 @@ void getInput() {
 /**
  * A method to track items that are produced and allow for the production of more items.
  */
-void produceItems() {
+void produce_items() {
     //greeting user
     std::cout << "Welcome to the production tab" << std::endl;
     std::cout << "Here is a list of items that are available for production" << std::endl;
@@ -113,10 +114,10 @@ void produceItems() {
     std::vector<std::string> items;
 
     //ensuring good input
-    unsigned int itemSelected = 0;
-    bool goodInput = false;
+    unsigned int item_selected = 0;
+    bool good_input = false;
     //looping until good input is recieved
-    while (goodInput == false) {
+    while (good_input == false) {
         //making sure the vector is clear
         items.clear();
         //creating placeholder for file data
@@ -127,13 +128,13 @@ void produceItems() {
         //checking if file is open
         if (catalog.is_open()) {
             //declaring line counter
-            int lineCounter = 0;
+            int line_counter = 0;
             //while there are more lines, takes the line and stores it as variable line
             while (getline(catalog, line)) {
                 //storing line in array
                 items.push_back(line);
                 //incrementing counter
-                lineCounter++;
+                line_counter++;
             }
         }
 
@@ -151,35 +152,35 @@ void produceItems() {
         std::cout << items.size() + 1 << ". " << "Add new item" << std::endl;
 
         //getting input from user
-        std::cin >> itemSelected;
+        std::cin >> item_selected;
         //checking if the user selection is in the array, is add new item, or is bad input
-        if (itemSelected <= items.size() && itemSelected > 0) {
-            goodInput = true;
-        } else if (itemSelected == items.size() + 1) {
-            addItem();
+        if (item_selected <= items.size() && item_selected > 0) {
+            good_input = true;
+        } else if (item_selected == items.size() + 1) {
+            add_item();
         } else {
             std::cout << "Input not understood" << std::endl;
         }
     }
 
     //selecting item based on user input
-    std::string itemToProduce = items[itemSelected - 1]; // subtracting 1 because zero index
+    std::string item_to_produce = items[item_selected - 1]; // subtracting 1 because zero index
 
     //creating variables to hold information about the item
     std::string manufacturer;
-    std::string itemName;
-    std::string itemTypeCode;
+    std::string item_name;
+    std::string item_type_code;
 
     //assigning product data to variables
-    std::stringstream stream(itemToProduce);
+    std::stringstream stream(item_to_produce);
     getline(stream, manufacturer, ',');
-    getline(stream, itemName, ',');
-    getline(stream, itemTypeCode, ',');
+    getline(stream, item_name, ',');
+    getline(stream, item_type_code, ',');
 
     //prompting user for number of items produced and assigning to variable
     std::cout << "Enter the number of items that were produced" << std::endl;
-    int numProduced;
-    std::cin >> numProduced;
+    int num_produced;
+    std::cin >> num_produced;
 
     //reading file
     std::ifstream production_number_in;
@@ -204,11 +205,11 @@ void produceItems() {
     production_number_string_stream >> production_number;
 
     //reading file
-    std::ifstream producedIn;
-    producedIn.open("produced.csv");
+    std::ifstream produced_in;
+    produced_in.open("produced.csv");
 
     //creating a string to hold the first part of a serial number to match with others that have already been produced
-    std::string searchString = itemTypeCode;
+    std::string searchString = item_type_code;
 
     //creating placeholder for file data
     std::string line;
@@ -217,11 +218,11 @@ void produceItems() {
     std::string found = "not found";
 
     //creating a variable to hold number of the current line
-    unsigned int currentLine = 0;
+    unsigned int current_line = 0;
 
     //looping to find the last occurance of the serial number being searched for
-    while (getline(producedIn, line)) {
-        currentLine++;
+    while (getline(produced_in, line)) {
+        current_line++;
         //checking if the line contains the searched for serial number
         if (line.find(searchString, 0) != std::string::npos) {
             //setting the line matching the looked for serial number to found
@@ -229,48 +230,48 @@ void produceItems() {
         }
     }
 
-    int startingNumber;
-    int endingNumber;
+    int starting_number;
+    int ending_number;
 
     if (found == "not found") {
 
-        startingNumber = 0;
+        starting_number = 0;
 
-        endingNumber = numProduced;
+        ending_number = num_produced;
     } else {
         //creating a string stream with just the last 5 digits of the serial number
         std::stringstream startingNumberStream(found.substr(found.length() - 5));
 
         //storing that stream in the variable starting number
-        startingNumberStream >> startingNumber;
+        startingNumberStream >> starting_number;
 
         //adding one to starting number
-        startingNumber++;
+        starting_number++;
         //
-        endingNumber = startingNumber + numProduced;
+        ending_number = starting_number + num_produced;
     }
 
     //closing stream
-    producedIn.close();
+    produced_in.close();
 
     //opening file
-    std::ofstream producedOut;
-    producedOut.open("produced.csv", std::ios_base::app);
+    std::ofstream produced_out;
+    produced_out.open("produced.csv", std::ios_base::app);
 
     //opening file
     std::ofstream production_number_out;
     production_number_out.open("production_number.txt");
 
     //looping to output production number and serial number and write to file
-    for (int i = startingNumber; i < endingNumber; i++) {
+    for (int i = starting_number; i < ending_number; i++) {
         //outputting production number
         std::cout << "Production Number: " << production_number;
         //creating serial number
-        std::string serialNumber = manufacturer.substr(0, 3) + itemTypeCode + addLeadingZeros(i);
+        std::string serialNumber = manufacturer.substr(0, 3) + item_type_code + add_leading_zeros(i);
         //outputting production number
         std::cout << " Serial Number: " << serialNumber << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
-        producedOut << manufacturer << "," << itemName << "," << itemTypeCode << "," << production_number
+        produced_out << manufacturer << "," << item_name << "," << item_type_code << "," << production_number
                     << "," << serialNumber << "\n";
         //iterating production number
         ++production_number;
@@ -280,14 +281,14 @@ void produceItems() {
     production_number_out << production_number;
 
     //closing file
-    producedOut.close();
+    produced_out.close();
     production_number_out.close();
 }
 
 /**
  * This method allows the user to add a new item that can be produced.
  */
-void addItem() {
+void add_item() {
     // prompting the user for the manufacturer
     std::cout << "Enter the manufacturer" << std::endl;
     std::string manufacturer;
@@ -295,13 +296,13 @@ void addItem() {
 
     //prompting the user for a product name
     std::cout << "Enter the product name" << std::endl;
-    std::string productName;
-    std::cin >> productName;
+    std::string product_name;
+    std::cin >> product_name;
 
     //creating a variable to hold the users input
-    int itemTypeChoice;
+    int item_type_choice;
     //creating a variable to hold the item code
-    std::string itemTypeCode;
+    std::string item_type_code;
     //creating a boolean for the loop
     bool gotten_input = false;
     //looping to ensure the user enters good input
@@ -313,23 +314,23 @@ void addItem() {
                   "3. AudioMobile\n" <<
                   "4. VisualMobile\n";
         //reading user choice
-        std::cin >> itemTypeChoice;
+        std::cin >> item_type_choice;
         //switch to select correct item code from user choice
-        switch (itemTypeChoice) {
+        switch (item_type_choice) {
             case 1:
-                itemTypeCode = "MM";
+                item_type_code = "MM";
                 gotten_input = true;
                 break;
             case 2:
-                itemTypeCode = "VI";
+                item_type_code = "VI";
                 gotten_input = true;
                 break;
             case 3:
-                itemTypeCode = "AM";
+                item_type_code = "AM";
                 gotten_input = true;
                 break;
             case 4:
-                itemTypeCode = "VM";
+                item_type_code = "VM";
                 gotten_input = true;
                 break;
             default:
@@ -340,16 +341,16 @@ void addItem() {
     }
 
     //creating file
-    std::ofstream myFile;
+    std::ofstream catalog_out;
 
     //opening file
-    myFile.open("catalog.csv", std::ios_base::app);
+    catalog_out.open("catalog.csv", std::ios_base::app);
 
     //writing to file
-    myFile << manufacturer << "," << productName << "," << itemTypeCode << "\n";
+    catalog_out << manufacturer << "," << product_name << "," << item_type_code << "\n";
 
     //closing file
-    myFile.close();
+    catalog_out.close();
 
     //providing feedback to user
     std::cout << "Item has been saved" << std::endl;
@@ -362,7 +363,7 @@ void addItem() {
  */
 void production_statistics() {
     //declaring variable for user input
-    int userInput;
+    int user_input;
     //declaring boolean to track if the user is done with the program
     bool exit = false;
     //looping to get input from the user
@@ -373,9 +374,9 @@ void production_statistics() {
         //display a menu for the user showing the options
         show_statistics_menu();
         //reading input from cin
-        std::cin >> userInput;
+        std::cin >> user_input;
         //using input to select menu options
-        switch (userInput) {
+        switch (user_input) {
             case 1:
                 get_production_from_serial();
                 break;
@@ -444,7 +445,7 @@ void get_production_from_serial() {
  */
 void show_available_products_sorted() {
     //printing to user
-    std::cout << "Available items" << std::endl;
+    std::cout << "Available items:" << std::endl;
 
     //reading file
     std::ifstream catalog_in;
@@ -465,8 +466,6 @@ void show_available_products_sorted() {
         //getting the product name
         getline(stream, line, ',');
         product_line_names.push_back(line);
-        //getting the item type code
-        getline(stream, line, ',');
     }
     //sorting
     sort(product_line_names.begin(), product_line_names.end());
@@ -481,7 +480,7 @@ void show_available_products_sorted() {
  * @param num The number to be converted to a string with leading zeros
  * @return the string made from the int
  */
-std::string addLeadingZeros(int num) {
+std::string add_leading_zeros(int num) {
     //creating a string from the numbers
     std::string numString = std::to_string(num);
     //getting the length of the string
