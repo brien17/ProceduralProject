@@ -4,8 +4,7 @@
  * This file is production management software made for an imaginary company as an assignment for my COP 2001
  * course.
  * @author Cameron Brien
- * @bug typing letters at menus creates infinite loop, cannot put spaces in 
- * manufacturer or item name 
+ * @bug  
  */
 
 #include <iostream>
@@ -94,7 +93,9 @@ void get_input() {
                 exit = true;
                 break;
             default:
-                std::cout << "Not a valid selection" << std::endl;
+                std::cout << "Not a valid selection\n" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
         }
     }
 }
@@ -106,7 +107,6 @@ void produce_items() {
     //greeting user
     std::cout << "Welcome to the production tab" << std::endl;
     std::cout << "Here is a list of items that are available for production" << std::endl;
-    //make it so that it quits or goes to add item tab when there are no items to be produced
 
     //creating vector to store item information
     //credit: jrohde
@@ -151,15 +151,17 @@ void produce_items() {
         //displaying the option to add new items
         std::cout << items.size() + 1 << ". " << "Add new item" << std::endl;
 
-        //getting input from user
-        std::cin >> item_selected;
+        if(!(std::cin >> item_selected)) {
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+        }
         //checking if the user selection is in the array, is add new item, or is bad input
         if (item_selected <= items.size() && item_selected > 0) {
             good_input = true;
         } else if (item_selected == items.size() + 1) {
             add_item();
         } else {
-            std::cout << "Input not understood" << std::endl;
+            std::cout << "Input not understood\n" << std::endl;
         }
     }
 
@@ -289,15 +291,16 @@ void produce_items() {
  * This method allows the user to add a new item that can be produced.
  */
 void add_item() {
+    std::cin.ignore();
     // prompting the user for the manufacturer
     std::cout << "Enter the manufacturer" << std::endl;
     std::string manufacturer;
-    std::cin >> manufacturer;
+    std::getline(std::cin,manufacturer);
 
     //prompting the user for a product name
     std::cout << "Enter the product name" << std::endl;
     std::string product_name;
-    std::cin >> product_name;
+    std::getline(std::cin, product_name);
 
     //creating a variable to hold the users input
     int item_type_choice;
@@ -334,9 +337,9 @@ void add_item() {
                 gotten_input = true;
                 break;
             default:
-                std::cout << "Input not understood" << std::endl;
+                std::cout << "Input not understood\n" << std::endl;
                 std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin.ignore(10000, '\n');
         }
     }
 
@@ -388,6 +391,8 @@ void production_statistics() {
                 break;
             default:
                 std::cout << "Not a valid selection" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
         }
     }
 }
@@ -398,7 +403,7 @@ void production_statistics() {
 void show_statistics_menu() {
     std::cout << "1. Get Production Number From Serial Number" << std::endl;
     std::cout << "2. Show Available Products" << std::endl;
-    std::cout << "3. Exit" << std::endl;
+    std::cout << "3. Return to Main Menu" << std::endl;
 }
 
 /**
