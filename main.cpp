@@ -17,16 +17,27 @@
 
 //prototypes
 void show_menu();
+
 void get_input();
+
 void add_item();
+
 void produce_items();
+
 void production_statistics();
+
 void show_statistics_menu();
+
 void get_production_from_serial();
+
 void show_available_products_sorted();
+
 void add_employee_account();
+
 std::string log_in();
+
 std::string add_leading_zeros(int num);
+
 std::string encrypt_password(std::string password);
 
 /** The main method for my program that runs the other methods.
@@ -482,12 +493,12 @@ void add_employee_account() {
         bool symbol = false;
         bool valid = false;
         //looping to test each character of the password to see if it is legal
-        for (int i = 0; i < password.size(); i++){
-            if (islower(password[i])){
+        for (char c : password) {
+            if (islower(c)) {
                 lower = true;
-            } else if (isupper(password[i])){
+            } else if (isupper(c)) {
                 upper = true;
-            }else if (isdigit(password[i])){
+            } else if (isdigit(c)) {
                 number = true;
             } else {
                 symbol = true;
@@ -528,7 +539,7 @@ void add_employee_account() {
  * user name as a string.
  * @return The user name of the user
  */
-std::string log_in(){
+std::string log_in() {
     //declaring a variable to hold user name
     std::string user_name;
     //declaring a variable to hold user name
@@ -566,16 +577,18 @@ std::string log_in(){
                 if (line.find(search_string, 0) != std::string::npos) {
                     //setting the line matching the looked for serial number to found
                     found = line;
-                    std:: cout << "Login successful" << std::endl;
+                    std::cout << "Login successful" << std::endl;
+                    //returning user name
+                    return user_name;
                 }
             }
             std::cout << "user name or password is incorrect" << std::endl;
         }
         //closing file
         employee_accounts_in.close();
-        //returning user name
+        //should not get to this one but clion complains if I dont have it
         return user_name;
-    }else{
+    } else {
         return "";
     }
 }
@@ -608,18 +621,18 @@ std::string add_leading_zeros(int num) {
  * @param password The users password
  * @return The encrypted password
  */
-std::string encrypt_password(std::string password){
+std::string encrypt_password(std::string password) {
     int encrypt_number = 3;
 
-    if (password.length() == 1){
+    if (password.length() == 1) {
         return password;
     } else {
         // get Ascii code of first letter by casting char to int
-        int code = (int)password[0];
+        int code = (int) password[0];
         // shift the Ascii code by adding the encrypt number
         code += encrypt_number;
         // convert the new Ascii code to a character by casting int to char
-        char code_char = (char)code;
+        char code_char = (char) code;
         // return the decrypted char + a recursive call to decrypt the next char
         return (code_char + encrypt_password(password.substr(1, password.length() - 1)));
     }
