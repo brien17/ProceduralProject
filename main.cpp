@@ -225,7 +225,7 @@ void produce_items(std::vector<Item> &catalog, Stats &stats) {
     }
     //writing to stats file
     stats_out << stats.MM << ", " << stats.VI << ", " << stats.AM << ", " << stats.VM << ", " << stats.total_produced
-    << std::endl;
+              << std::endl;
     //giving feedback to user
     std::cout << "Saved to file" << std::endl;
     //closing out files
@@ -666,7 +666,7 @@ std::vector<Item> load_catalog() {
  */
 Stats load_stats() {
     //creating variables to hold information
-    Stats stats = {0,0,0,0,0};
+    Stats stats = {0, 0, 0, 0, 0};
     std::string line;
 
     //reading file
@@ -712,7 +712,7 @@ Stats load_stats() {
  * This method prints the contents of a file that is passed as a parameter.
  * @param file_path The name of the file to be read
  */
-void print_file(const std::string &file_path){
+void print_file(const std::string &file_path) {
     //opening file
     std::ifstream file_in;
     file_in.open(file_path);
@@ -721,7 +721,7 @@ void print_file(const std::string &file_path){
     //checking if file is open
     if (file_in.is_open()) {
         std::cout << "Available products:" << std::endl;
-        while (getline(file_in, line)){
+        while (getline(file_in, line)) {
             std::cout << line << std::endl;
         }
         std::cout << "\n";
