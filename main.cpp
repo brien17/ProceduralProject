@@ -498,7 +498,7 @@ void add_employee_account() {
     std::ofstream employee_accounts_out;
 
     //opening file
-    employee_accounts_out.open("employee_accounts.txt", std::ios_base::app);
+    employee_accounts_out.open("Users.txt", std::ios_base::app);
 
     //writing to file
     employee_accounts_out << user_name << "," << encrypted_password << std::endl;
@@ -524,7 +524,7 @@ std::string log_in() {
     std::string found = "not found";
     //opening file
     std::ifstream employee_accounts_in;
-    employee_accounts_in.open("employee_accounts.txt");
+    employee_accounts_in.open("Users.txt");
     //creating a variable to hold a line
     std::string line;
     //checking if file is open
