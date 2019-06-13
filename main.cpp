@@ -22,7 +22,13 @@ struct Item {
     std::string item_name;
     std::string item_type_code;
 };
-
+struct Product {
+    std::string manufacturer;
+    std::string item_name;
+    std::string item_type_code;
+    std::string production_number;
+    std::string serial_number;
+};
 struct Stats {
     int MM;
     int VI;
@@ -36,13 +42,15 @@ void get_input();
 
 void add_item(std::vector<Item> &);
 
+void remove_item(std::vector<Item> &);
+
 void produce_items(std::vector<Item> &, Stats &);
 
-void production_statistics(const Stats &stats);
+void production_statistics(const Stats &stats, const std::vector<Item> &);
 
-void get_production_from_serial();
+void get_production_from_serial(const std::vector<Product> &);
 
-void show_available_products_sorted();
+void show_available_products_sorted(const std::vector<Item> &);
 
 void add_employee_account();
 
@@ -54,9 +62,15 @@ std::string encrypt_password(std::string password);
 
 std::vector<Item> load_catalog();
 
+std::vector<Product> load_production_log();
+
 Stats load_stats();
 
 void print_file(const std::string &);
+
+void print_produced_by_manufacturer (const std::vector<Product> &);
+
+void print_produced_by_item_name (const std::vector<Product> &);
 
 /** The main method for my program that runs the other methods.
  *
@@ -88,13 +102,15 @@ void get_input() {
     //looping to get input from the user
     while (!exit) {
         //prompting the user and displaying a menu showing options
+        std::cout << "\n"; //leaving a blank line for readability for the user
         std::cout << "Please select an option" << std::endl;
         std::cout << "1. Produce Items" << std::endl;
         std::cout << "2. Add Employee Account" << std::endl;
         std::cout << "3. Add New Product" << std::endl;
-        std::cout << "4. Display Production Statistics" << std::endl;
-        std::cout << "5. Login" << std::endl;
-        std::cout << "6. Exit" << std::endl;
+        std::cout << "4. Remove a Product" << std::endl;
+        std::cout << "5. Display Production Statistics" << std::endl;
+        std::cout << "6. Login" << std::endl;
+        std::cout << "7. Exit" << std::endl;
         //reading input from cin
         std::cin >> user_input;
         //using input to select menu options
@@ -109,17 +125,20 @@ void get_input() {
                 add_item(catalog);
                 break;
             case 4:
-                production_statistics(stats);
+                remove_item(catalog);
                 break;
             case 5:
-                current_user = log_in();
-                std::cout << "Welcome " << current_user << std::endl << std::endl;
+                production_statistics(stats, catalog);
                 break;
             case 6:
+                current_user = log_in();
+                std::cout << "Welcome " << current_user << std::endl;
+                break;
+            case 7:
                 exit = true;
                 break;
             default:
-                std::cout << "Not a valid selection\n" << std::endl;
+                std::cout << "Not a valid selection" << std::endl;
                 std::cin.clear();
                 std::cin.ignore(10000, '\n');
         }
@@ -129,7 +148,10 @@ void get_input() {
 }
 
 /**
- * A method to track items that are produced and allow for the production of more items.
+ * This method allows the user to select a product and specify the number of items produced and then writes that
+ * information along with the serial numbers to a file.
+ * @param catalog The catalog of available products
+ * @param stats The production number and numbers produced for each item type
  */
 void produce_items(std::vector<Item> &catalog, Stats &stats) {
     //greeting user
@@ -235,6 +257,7 @@ void produce_items(std::vector<Item> &catalog, Stats &stats) {
 
 /**
  * This method allows the user to add a new item that can be produced.
+ * @param catalog The catalog of available products
  */
 void add_item(std::vector<Item> &catalog) {
     //clearing the buffer
@@ -306,9 +329,62 @@ void add_item(std::vector<Item> &catalog) {
 }
 
 /**
- * This method gets input from the user and allows them to run other production statistics methods
+ * This method removes an item from the catalog that is specified by the user.
+ * @param catalog The catalog of items
  */
-void production_statistics(const Stats &stats) {
+void remove_item(std::vector<Item> &catalog) {
+    //ensuring good input
+    unsigned int user_input = 0;
+    bool good_input = false;
+    //looping until good input is received
+    while (!good_input) {
+        //prompting user
+        std::cout << "Select an available item to be deleted" << std::endl;
+        //displaying available items
+        for (unsigned int i = 0; i < catalog.size(); i++) {
+            std::cout << i + 1 << ". " << catalog[i].manufacturer << ", " << catalog[i].item_name << ", "
+                      << catalog[i].item_type_code << std::endl;
+        }
+
+        //checking if the user inputs the right type of data
+        if (!(std::cin >> user_input)) {
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Input not understood" << std::endl;
+        }
+
+        //checking if the user selection is in the array
+        if (user_input <= catalog.size() && user_input > 0) {
+            std::vector<Item>::iterator it1;
+            it1 = catalog.begin();
+            catalog.erase(it1 + user_input - 1);
+            good_input = true;
+        } else {
+            std::cout << "Input not understood" << std::endl;
+        }
+    }
+    //opening file
+    std::ofstream catalog_out;
+    catalog_out.open("ProductLine.csv", std::ios::trunc);
+
+    for (const Item &item : catalog) {
+        //writing to file
+        catalog_out << item.manufacturer << "," << item.item_name << "," << item.item_type_code << "\n";
+    }
+    //closing file
+    catalog_out.close();
+
+    //providing feedback to user
+    std::cout << "Item has been erased" << std::endl;
+}
+
+/**
+ * This method gets input from the user and allows them to run other production statistics methods.
+ * @param stats The production number and numbers produced for each item type
+ */
+void production_statistics(const Stats &stats, const std::vector<Item> &catalog) {
+    //loading the production log
+    std::vector<Product> production_log = load_production_log();
     //declaring variable for user input
     int user_input;
     //declaring boolean to track if the user is done with the program
@@ -316,23 +392,26 @@ void production_statistics(const Stats &stats) {
     //looping to get input from the user
     while (!exit) {
         //prompting the user and showing them options
+        std::cout << "\n"; //leaving a blank line for readability for the user
         std::cout << "Welcome to the production statistics tab" << std::endl;
         std::cout << "Please select an option to continue" << std::endl;
         std::cout << "1. Get Production Number From Serial Number" << std::endl;
         std::cout << "2. Show Available Products" << std::endl;
         std::cout << "3. Show Catalog" << std::endl;
         std::cout << "4. Show Production Log" << std::endl;
-        std::cout << "5. Show Products Produced" << std::endl;
-        std::cout << "6. Return to Main Menu" << std::endl;
+        std::cout << "5. Show Total Number of Products Produced" << std::endl;
+        std::cout << "6. Show Number of Products Produced for a Specific Manufacturer" << std::endl;
+        std::cout << "7. Show Number of an Item Produced" << std::endl;
+        std::cout << "8. Return to Main Menu" << std::endl;
         //reading input from cin
         std::cin >> user_input;
         //using input to select menu options
         switch (user_input) {
             case 1:
-                get_production_from_serial();
+                get_production_from_serial(production_log);
                 break;
             case 2:
-                show_available_products_sorted();
+                show_available_products_sorted(catalog);
                 break;
             case 3:
                 print_file("ProductLine.csv");
@@ -349,6 +428,12 @@ void production_statistics(const Stats &stats) {
                 std::cout << std::endl;
                 break;
             case 6:
+                print_produced_by_manufacturer(production_log);
+                break;
+            case 7:
+                print_produced_by_item_name(production_log);
+                break;
+            case 8:
                 exit = true;
                 break;
             default:
@@ -363,9 +448,9 @@ void production_statistics(const Stats &stats) {
  * This method prompts the user for a serial number and then prints the production number for that serial number to the
  * console.
  */
-void get_production_from_serial() {
+void get_production_from_serial(const std::vector<Product> &production_log) {
     //creating a variable to hold the user input
-    std::string serial_number = "Serial number not found";
+    std::string serial_number;
 
     //prompting the user
     std::cout << "Please enter a serial number" << std::endl;
@@ -373,63 +458,39 @@ void get_production_from_serial() {
     //assigning their input to the variable
     std::cin >> serial_number;
 
-    //reading file
-    std::ifstream produced_in;
-    produced_in.open("ProductionLog.csv");
-
-    //creating placeholder for file data
-    std::string line;
-
-    //creating a variable to hold number of the current line
-    unsigned int production_number = 0;
-
-    //looping to find the serial number in the produced file
-    while (getline(produced_in, line)) {
-        //iterating the counter variable
-        ++production_number;
-        //checking if the line contains the searched for serial number
-        if (line.find(serial_number, 0) != std::string::npos) {
-            //breaking out of the loop if it matches
-            break;
+    //creating a boolean to test if the serial number was found
+    bool found = false;
+    //looping to find serial number
+    for (const Product &product : production_log) {
+        if (product.serial_number == serial_number) {
+            std::cout << "The production number is: " << product.production_number << std::endl;
+            found = true;
         }
     }
-    std::cout << "The production number is, " << production_number << std::endl;
-
-    produced_in.close();
+    //telling the user if the serial number was not found
+    if (!found) {
+        std::cout << "Serial number not found" << std::endl;
+    }
 }
 
 /**
  * This method prints a sorted list of all of the products that are able to printed to the console.
  */
-void show_available_products_sorted() {
+void show_available_products_sorted(const std::vector<Item> &catalog) {
     //printing to user
     std::cout << "Available items:" << std::endl;
 
-    //reading file
-    std::ifstream catalog_in;
-    catalog_in.open("ProductLine.csv");
-
     //creating a vector to hold the product names
-    std::vector<std::string> product_line_names;
+    std::vector<std::string> product_line_names(catalog.size());
 
-    //creating a temporary variable to hold the line
-    std::string line;
-
-    //looping over the catalog and adding the name to the vector
-    while (getline(catalog_in, line)) {
-        //creating a stream for the line
-        std::stringstream stream(line);
-        //getting the manufacturer
-        getline(stream, line, ',');
-        //getting the product name
-        getline(stream, line, ',');
-        product_line_names.push_back(line);
+    for (const Item &product : catalog){
+        product_line_names.push_back(product.item_name);
     }
     //sorting
     sort(product_line_names.begin(), product_line_names.end());
     //printing items
     for (std::string &s : product_line_names)
-        std::cout << s << "\n";
+        std::cout << s << std::endl;
 }
 
 /**
@@ -628,9 +689,6 @@ std::vector<Item> load_catalog() {
 
     //creating variables to hold information
     std::string line;
-    std::string manufacturer;
-    std::string item_name;
-    std::string item_type_code;
 
     //reading file
     std::ifstream catalog_in("ProductLine.csv");
@@ -642,12 +700,10 @@ std::vector<Item> load_catalog() {
             Item temp_struct;
             //assigning product data to struct
             std::stringstream stream(line);
-            getline(stream, manufacturer, ',');
-            temp_struct.manufacturer = manufacturer;
-            getline(stream, item_name, ',');
-            temp_struct.item_name = item_name;
-            getline(stream, item_type_code, ',');
-            temp_struct.item_type_code = item_type_code;
+            getline(stream, temp_struct.manufacturer, ',');
+            getline(stream, temp_struct.item_name, ',');
+            getline(stream, temp_struct.item_type_code, ',');
+
             //pushing struct to vector
             catalog.push_back(temp_struct);
         }
@@ -658,6 +714,44 @@ std::vector<Item> load_catalog() {
 
     //returning the catalog
     return catalog;
+}
+
+/**
+ * This is a method to load the production log from a file and store it in a vector containing structs.
+ * @return A vector containing structs that store the production log
+ */
+std::vector<Product> load_production_log() {
+    //creating the vector of items
+    std::vector<Product> production_log;
+
+    //creating variables to hold information
+    std::string line;
+
+    //reading file
+    std::ifstream production_log_in("ProductionLog.csv");
+
+    //checking if file is open
+    if (production_log_in.is_open()) {
+        //while there are more lines, takes the line and stores it as variable line
+        while (getline(production_log_in, line)) {
+            Product temp_struct;
+            //assigning product data to struct
+            std::stringstream stream(line);
+            getline(stream, temp_struct.manufacturer, ',');
+            getline(stream, temp_struct.item_name, ',');
+            getline(stream, temp_struct.item_type_code, ',');
+            getline(stream, temp_struct.production_number, ',');
+            getline(stream, temp_struct.serial_number, ',');
+            //pushing struct to vector
+            production_log.push_back(temp_struct);
+        }
+    }
+
+    //closing file
+    production_log_in.close();
+
+    //returning the catalog
+    return production_log;
 }
 
 /**
@@ -728,4 +822,50 @@ void print_file(const std::string &file_path) {
     } else {
         std::cout << "File could not be opened" << std::endl;
     }
+}
+
+/**
+ * This method displays the number of items produced of for a specific manufacturer entered by the user.
+ * @param production_log A vector containing structs that store the production log information
+ */
+void print_produced_by_manufacturer (const std::vector<Product> & production_log){
+    //creating variable to hold data
+    std::string manufacturer;
+    //prompting user
+    std::cout << "Enter the manufacturer to view the number of items produced for that manufacturer" << std::endl;
+    //getting input
+    std::cin >> manufacturer;
+    //initializing iterator
+    int num_produced = 0;
+    //looping over the produced items
+    for (const Product &product : production_log) {
+        if (product.manufacturer == manufacturer) {
+            num_produced++;
+        }
+    }
+    //printing output to user
+    std::cout << "We have made " << num_produced << " products for " << manufacturer << std::endl;
+}
+
+/**
+ * This method displays the number of items produced of a specific item name entered by the user.
+ * @param production_log A vector containing structs that store the production log information
+ */
+void print_produced_by_item_name (const std::vector<Product> & production_log){
+    //creating variable to hold data
+    std::string item_name;
+    //prompting user
+    std::cout << "Enter the item name to view the number of that item produced" << std::endl;
+    //getting input
+    std::cin >> item_name;
+    //initializing iterator
+    int num_produced = 0;
+    //looping over the produced items
+    for (const Product &product : production_log) {
+        if (product.item_name == item_name) {
+            num_produced++;
+        }
+    }
+    //printing output to user
+    std::cout << "We have made " << num_produced << " products for " << item_name << std::endl;
 }
