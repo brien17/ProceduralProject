@@ -68,9 +68,9 @@ Stats load_stats();
 
 void print_file(const std::string &);
 
-void print_produced_by_manufacturer (const std::vector<Product> &);
+void print_produced_by_manufacturer(const std::vector<Product> &);
 
-void print_produced_by_item_name (const std::vector<Product> &);
+void print_produced_by_item_name(const std::vector<Product> &);
 
 /** The main method for my program that runs the other methods.
  *
@@ -333,7 +333,7 @@ void add_item(std::vector<Item> &catalog) {
  * @param catalog The catalog of items
  */
 void remove_item(std::vector<Item> &catalog, const std::string &current_user) {
-    if (current_user.empty()){
+    if (current_user.empty()) {
         std::cout << "You must be logged in to remove items" << std::endl;
     } else {
         //ensuring good input
@@ -487,7 +487,7 @@ void show_available_products_sorted(const std::vector<Item> &catalog) {
     //creating a vector to hold the product names
     std::vector<std::string> product_line_names(catalog.size());
 
-    for (const Item &product : catalog){
+    for (const Item &product : catalog) {
         product_line_names.push_back(product.item_name);
     }
     //sorting
@@ -833,7 +833,7 @@ void print_file(const std::string &file_path) {
  * This method displays the number of items produced of for a specific manufacturer entered by the user.
  * @param production_log A vector containing structs that store the production log information
  */
-void print_produced_by_manufacturer (const std::vector<Product> & production_log){
+void print_produced_by_manufacturer(const std::vector<Product> &production_log) {
     //creating variable to hold data
     std::string manufacturer;
     //prompting user
@@ -856,7 +856,7 @@ void print_produced_by_manufacturer (const std::vector<Product> & production_log
  * This method displays the number of items produced of a specific item name entered by the user.
  * @param production_log A vector containing structs that store the production log information
  */
-void print_produced_by_item_name (const std::vector<Product> & production_log){
+void print_produced_by_item_name(const std::vector<Product> &production_log) {
     //creating variable to hold data
     std::string item_name;
     //prompting user

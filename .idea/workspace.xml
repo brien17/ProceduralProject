@@ -13,7 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="338" column="29" selection-end-line="874" selection-end-column="1" />
+            <state relative-caret-position="168">
+              <caret line="759" column="1" selection-start-line="759" selection-start-column="1" selection-end-line="759" selection-end-column="1" />
               <folding>
                 <element signature="e#0#463#0" />
                 <element signature="e#633#737#1" />
@@ -46,11 +46,13 @@
                 <element signature="e#1280#1361#0" />
                 <element signature="e#1280#1606#0" />
                 <element signature="e#2055#2194#0" />
+                <element signature="e#2055#3630#0" />
                 <element signature="e#3797#3844#0" />
                 <element signature="e#3632#7836#0" />
                 <element signature="e#7838#7916#0" />
                 <element signature="e#8988#11365#0" />
                 <element signature="e#10598#10628#0" />
+                <element signature="e#11367#13323#0" />
                 <element signature="e#10114#10220#0" />
                 <element signature="e#12848#15089#0" />
                 <element signature="e#11457#11596#0" />
@@ -251,7 +253,7 @@
       <workItem from="1559088214599" duration="20579000" />
       <workItem from="1559245037914" duration="1304000" />
       <workItem from="1559310359326" duration="27156000" />
-      <workItem from="1560113573279" duration="37424000" />
+      <workItem from="1560113573279" duration="38635000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1557934701054</created>
@@ -456,11 +458,25 @@
       <option name="project" value="LOCAL" />
       <updated>1560443510927</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Made it so only people who are logged in can remove items">
+      <created>1560443623357</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1560443623357</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Added better user feedback">
+      <created>1560443947134</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1560443947134</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124676000" />
+    <option name="totallyTimeSpent" value="125887000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -542,7 +558,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test commit" />
     <MESSAGE value="Added ability for users to make menu choices and displays menu" />
     <MESSAGE value="Added functionality for produce items and add new product." />
     <MESSAGE value="Added more comments." />
@@ -567,7 +582,8 @@
     <MESSAGE value="Renamed employee_accounts.txt to Users.txt" />
     <MESSAGE value="Added ability to print by totals for manufacturer&#10;and item name. The production_statistics method &#10;now reads the production log into a vector of structs&#10;when it is run." />
     <MESSAGE value="Made it so only people who are logged in can remove items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made it so only people who are logged in can remove items" />
+    <MESSAGE value="Added better user feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added better user feedback" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/example.txt" />
@@ -625,8 +641,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="338" column="29" selection-end-line="874" selection-end-column="1" />
+        <state relative-caret-position="168">
+          <caret line="759" column="1" selection-start-line="759" selection-start-column="1" selection-end-line="759" selection-end-column="1" />
           <folding>
             <element signature="e#0#463#0" />
             <element signature="e#633#737#1" />
@@ -635,11 +651,13 @@
             <element signature="e#1280#1361#0" />
             <element signature="e#1280#1606#0" />
             <element signature="e#2055#2194#0" />
+            <element signature="e#2055#3630#0" />
             <element signature="e#3797#3844#0" />
             <element signature="e#3632#7836#0" />
             <element signature="e#7838#7916#0" />
             <element signature="e#8988#11365#0" />
             <element signature="e#10598#10628#0" />
+            <element signature="e#11367#13323#0" />
             <element signature="e#10114#10220#0" />
             <element signature="e#12848#15089#0" />
             <element signature="e#11457#11596#0" />
