@@ -14,7 +14,6 @@
     <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProceduralProject.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
+            <state relative-caret-position="196">
+              <caret line="338" column="29" selection-end-line="874" selection-end-column="1" />
               <folding>
                 <element signature="e#0#463#0" />
                 <element signature="e#633#737#1" />
@@ -252,7 +251,7 @@
       <workItem from="1559088214599" duration="20579000" />
       <workItem from="1559245037914" duration="1304000" />
       <workItem from="1559310359326" duration="27156000" />
-      <workItem from="1560113573279" duration="37158000" />
+      <workItem from="1560113573279" duration="37424000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1557934701054</created>
@@ -450,11 +449,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560388247506</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Made it so only people who are logged in can remove items">
+      <created>1560443510927</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1560443510927</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124410000" />
+    <option name="totallyTimeSpent" value="124676000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -560,7 +566,8 @@
     <MESSAGE value="Formatted lines" />
     <MESSAGE value="Renamed employee_accounts.txt to Users.txt" />
     <MESSAGE value="Added ability to print by totals for manufacturer&#10;and item name. The production_statistics method &#10;now reads the production log into a vector of structs&#10;when it is run." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to print by totals for manufacturer&#10;and item name. The production_statistics method &#10;now reads the production log into a vector of structs&#10;when it is run." />
+    <MESSAGE value="Made it so only people who are logged in can remove items" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made it so only people who are logged in can remove items" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/example.txt" />
@@ -618,8 +625,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
+        <state relative-caret-position="196">
+          <caret line="338" column="29" selection-end-line="874" selection-end-column="1" />
           <folding>
             <element signature="e#0#463#0" />
             <element signature="e#633#737#1" />
