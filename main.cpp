@@ -554,6 +554,7 @@ void add_employee_account() {
             std::cout << "Password accepted" << std::endl;
         } else {
             std::cout << "Password not accepted" << std::endl;
+            std::cout << "Please try again" << std::endl;
         }
     }
     //encrypting password
