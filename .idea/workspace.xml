@@ -37,26 +37,27 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="517" column="21" selection-start-line="517" selection-start-column="21" selection-end-line="517" selection-end-column="21" />
+            <state relative-caret-position="238">
+              <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
               <folding>
                 <element signature="e#0#463#0" />
                 <element signature="e#633#737#1" />
+                <element signature="e#739#761#1" />
                 <element signature="e#740#828#1" />
                 <element signature="e#1280#1361#0" />
                 <element signature="e#1280#1606#0" />
                 <element signature="e#2055#2194#0" />
-                <element signature="e#2055#3630#0" />
-                <element signature="e#3632#3728#0" />
+                <element signature="e#3797#3844#0" />
                 <element signature="e#3632#7836#0" />
                 <element signature="e#7838#7916#0" />
-                <element signature="e#7838#10112#0" />
+                <element signature="e#8988#11365#0" />
+                <element signature="e#10598#10628#0" />
                 <element signature="e#10114#10220#0" />
-                <element signature="e#10144#11855#0" />
+                <element signature="e#12848#15089#0" />
                 <element signature="e#11457#11596#0" />
                 <element signature="e#11457#12664#0" />
                 <element signature="e#12666#12773#0" />
-                <element signature="e#12666#13706#0" />
+                <element signature="e#16280#17349#0" />
                 <element signature="e#13708#13865#0" />
                 <element signature="e#13708#16512#0" />
                 <element signature="e#16514#16705#0" />
@@ -67,11 +68,45 @@
                 <element signature="e#20063#20896#0" />
                 <element signature="e#20898#21070#0" />
                 <element signature="e#20898#22200#0" />
+                <element signature="e#25577#25749#0" />
+                <element signature="e#25555#25606#0" />
                 <element signature="e#22202#22356#0" />
                 <element signature="e#22202#23650#0" />
                 <element signature="e#23800#23832#0" />
                 <element signature="e#23800#24349#0" />
+                <element signature="e#29260#29297#0" />
+                <element signature="e#29260#29997#0" />
+                <element signature="e#29999#30201#0" />
+                <element signature="e#29828#30527#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductLine.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductionLog.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="26" selection-start-column="16" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/Users.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/stats.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -103,6 +138,7 @@
       <find>catalog.csv</find>
       <find>welcome</find>
       <find>employee_accounts.txt</find>
+      <find>ProductionLog.csv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -216,7 +252,7 @@
       <workItem from="1559088214599" duration="20579000" />
       <workItem from="1559245037914" duration="1304000" />
       <workItem from="1559310359326" duration="27156000" />
-      <workItem from="1560113573279" duration="29749000" />
+      <workItem from="1560113573279" duration="37158000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1557934701054</created>
@@ -400,11 +436,25 @@
       <option name="project" value="LOCAL" />
       <updated>1560352954879</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Renamed employee_accounts.txt to Users.txt">
+      <created>1560353513991</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1560353513991</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added ability to print by totals for manufacturer&#10;and item name. The production_statistics method &#10;now reads the production log into a vector of structs&#10;when it is run.">
+      <created>1560388247506</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1560388247506</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117001000" />
+    <option name="totallyTimeSpent" value="124410000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -417,13 +467,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12483221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30736545" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21671388" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -507,7 +558,9 @@
     <MESSAGE value="Added ability to print files and cleaned up code" />
     <MESSAGE value="Added ability to print files and cleaned up code, &#10;moved user greeting from inside of log in function&#10;to after log_in in menu." />
     <MESSAGE value="Formatted lines" />
-    <option name="LAST_COMMIT_MESSAGE" value="Formatted lines" />
+    <MESSAGE value="Renamed employee_accounts.txt to Users.txt" />
+    <MESSAGE value="Added ability to print by totals for manufacturer&#10;and item name. The production_statistics method &#10;now reads the production log into a vector of structs&#10;when it is run." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to print by totals for manufacturer&#10;and item name. The production_statistics method &#10;now reads the production log into a vector of structs&#10;when it is run." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/example.txt" />
@@ -536,13 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/stats.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/employee_accounts.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -550,28 +596,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Users.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/stats.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductLine.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductionLog.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="517" column="21" selection-start-line="517" selection-start-column="21" selection-end-line="517" selection-end-column="21" />
+        <state relative-caret-position="238">
+          <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
           <folding>
             <element signature="e#0#463#0" />
             <element signature="e#633#737#1" />
+            <element signature="e#739#761#1" />
             <element signature="e#740#828#1" />
             <element signature="e#1280#1361#0" />
             <element signature="e#1280#1606#0" />
             <element signature="e#2055#2194#0" />
-            <element signature="e#2055#3630#0" />
-            <element signature="e#3632#3728#0" />
+            <element signature="e#3797#3844#0" />
             <element signature="e#3632#7836#0" />
             <element signature="e#7838#7916#0" />
-            <element signature="e#7838#10112#0" />
+            <element signature="e#8988#11365#0" />
+            <element signature="e#10598#10628#0" />
             <element signature="e#10114#10220#0" />
-            <element signature="e#10144#11855#0" />
+            <element signature="e#12848#15089#0" />
             <element signature="e#11457#11596#0" />
             <element signature="e#11457#12664#0" />
             <element signature="e#12666#12773#0" />
-            <element signature="e#12666#13706#0" />
+            <element signature="e#16280#17349#0" />
             <element signature="e#13708#13865#0" />
             <element signature="e#13708#16512#0" />
             <element signature="e#16514#16705#0" />
@@ -582,10 +649,16 @@
             <element signature="e#20063#20896#0" />
             <element signature="e#20898#21070#0" />
             <element signature="e#20898#22200#0" />
+            <element signature="e#25577#25749#0" />
+            <element signature="e#25555#25606#0" />
             <element signature="e#22202#22356#0" />
             <element signature="e#22202#23650#0" />
             <element signature="e#23800#23832#0" />
             <element signature="e#23800#24349#0" />
+            <element signature="e#29260#29297#0" />
+            <element signature="e#29260#29997#0" />
+            <element signature="e#29999#30201#0" />
+            <element signature="e#29828#30527#0" />
           </folding>
         </state>
       </provider>

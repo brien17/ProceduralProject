@@ -42,7 +42,7 @@ void get_input();
 
 void add_item(std::vector<Item> &);
 
-void remove_item(std::vector<Item> &);
+void remove_item(std::vector<Item> &, const std::string &);
 
 void produce_items(std::vector<Item> &, Stats &);
 
@@ -125,7 +125,7 @@ void get_input() {
                 add_item(catalog);
                 break;
             case 4:
-                remove_item(catalog);
+                remove_item(catalog, current_user);
                 break;
             case 5:
                 production_statistics(stats, catalog);
@@ -332,50 +332,54 @@ void add_item(std::vector<Item> &catalog) {
  * This method removes an item from the catalog that is specified by the user.
  * @param catalog The catalog of items
  */
-void remove_item(std::vector<Item> &catalog) {
-    //ensuring good input
-    unsigned int user_input = 0;
-    bool good_input = false;
-    //looping until good input is received
-    while (!good_input) {
-        //prompting user
-        std::cout << "Select an available item to be deleted" << std::endl;
-        //displaying available items
-        for (unsigned int i = 0; i < catalog.size(); i++) {
-            std::cout << i + 1 << ". " << catalog[i].manufacturer << ", " << catalog[i].item_name << ", "
-                      << catalog[i].item_type_code << std::endl;
-        }
+void remove_item(std::vector<Item> &catalog, const std::string &current_user) {
+    if (current_user.empty()){
+        std::cout << "You must be logged in to remove items" << std::endl;
+    } else {
+        //ensuring good input
+        unsigned int user_input = 0;
+        bool good_input = false;
+        //looping until good input is received
+        while (!good_input) {
+            //prompting user
+            std::cout << "Select an available item to be deleted" << std::endl;
+            //displaying available items
+            for (unsigned int i = 0; i < catalog.size(); i++) {
+                std::cout << i + 1 << ". " << catalog[i].manufacturer << ", " << catalog[i].item_name << ", "
+                          << catalog[i].item_type_code << std::endl;
+            }
 
-        //checking if the user inputs the right type of data
-        if (!(std::cin >> user_input)) {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout << "Input not understood" << std::endl;
-        }
+            //checking if the user inputs the right type of data
+            if (!(std::cin >> user_input)) {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Input not understood" << std::endl;
+            }
 
-        //checking if the user selection is in the array
-        if (user_input <= catalog.size() && user_input > 0) {
-            std::vector<Item>::iterator it1;
-            it1 = catalog.begin();
-            catalog.erase(it1 + user_input - 1);
-            good_input = true;
-        } else {
-            std::cout << "Input not understood" << std::endl;
+            //checking if the user selection is in the array
+            if (user_input <= catalog.size() && user_input > 0) {
+                std::vector<Item>::iterator it1;
+                it1 = catalog.begin();
+                catalog.erase(it1 + user_input - 1);
+                good_input = true;
+            } else {
+                std::cout << "Input not understood" << std::endl;
+            }
         }
+        //opening file
+        std::ofstream catalog_out;
+        catalog_out.open("ProductLine.csv", std::ios::trunc);
+
+        for (const Item &item : catalog) {
+            //writing to file
+            catalog_out << item.manufacturer << "," << item.item_name << "," << item.item_type_code << "\n";
+        }
+        //closing file
+        catalog_out.close();
+
+        //providing feedback to user
+        std::cout << "Item has been erased" << std::endl;
     }
-    //opening file
-    std::ofstream catalog_out;
-    catalog_out.open("ProductLine.csv", std::ios::trunc);
-
-    for (const Item &item : catalog) {
-        //writing to file
-        catalog_out << item.manufacturer << "," << item.item_name << "," << item.item_type_code << "\n";
-    }
-    //closing file
-    catalog_out.close();
-
-    //providing feedback to user
-    std::cout << "Item has been erased" << std::endl;
 }
 
 /**
@@ -867,5 +871,5 @@ void print_produced_by_item_name (const std::vector<Product> & production_log){
         }
     }
     //printing output to user
-    std::cout << "We have made " << num_produced << " products for " << item_name << std::endl;
+    std::cout << "We have made " << num_produced << " " << item_name << "s" << std::endl;
 }
