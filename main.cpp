@@ -132,7 +132,6 @@ void get_input() {
                 break;
             case 6:
                 current_user = log_in();
-                std::cout << "Welcome " << current_user << std::endl;
                 break;
             case 7:
                 exit = true;
@@ -595,43 +594,41 @@ std::string log_in() {
     std::string line;
     //checking if file is open
     if (employee_accounts_in.is_open()) {
-        //looping until a valid login
-        while (found == "not found") {
-            //resetting back to the beginning of the file
-            employee_accounts_in.clear();
-            employee_accounts_in.seekg(0, std::ios::beg);
-            //prompting user for user name
-            std::cout << "Enter your user name" << std::endl;
-            //storing input as user name
-            std::cin >> user_name;
-            //prompting user for password
-            std::cout << "Enter your password" << std::endl;
-            //storing input as user name
-            std::cin >> password;
-            //encrypting password
-            std::string encrypted_password = encrypt_password(password);
-            //creating a string to hold the information being searched for
-            std::string search_string = user_name;
-            search_string.append("," + encrypted_password);
-            //looping to search for the password and user name
-            while (getline(employee_accounts_in, line)) {
-                //checking if the line contains the searched for serial number
-                if (line.find(search_string, 0) != std::string::npos) {
-                    //setting the line matching the looked for serial number to found
-                    found = line;
-                    //pushing the password off the screen (would like to be able to clear console later)
-                    std::cout << std::string(1000, '\n');
-                    std::cout << "Login successful" << std::endl;
-                    //returning user name
-                    return user_name;
-                }
+        //resetting back to the beginning of the file
+        employee_accounts_in.clear();
+        employee_accounts_in.seekg(0, std::ios::beg);
+        //prompting user for user name
+        std::cout << "Enter your user name" << std::endl;
+        //storing input as user name
+        std::cin >> user_name;
+        //prompting user for password
+        std::cout << "Enter your password" << std::endl;
+        //storing input as user name
+        std::cin >> password;
+        //encrypting password
+        std::string encrypted_password = encrypt_password(password);
+        //creating a string to hold the information being searched for
+        std::string search_string = user_name;
+        search_string.append("," + encrypted_password);
+        //looping to search for the password and user name
+        while (getline(employee_accounts_in, line)) {
+            //checking if the line contains the searched for serial number
+            if (line.find(search_string, 0) != std::string::npos) {
+                //setting the line matching the looked for serial number to found
+                found = line;
+                //pushing the password off the screen (would like to be able to clear console later)
+                std::cout << std::string(1000, '\n');
+                std::cout << "Login successful" << std::endl;
+                std::cout << "Welcome " << user_name << std::endl;
+                //returning user name
+                return user_name;
             }
-            std::cout << "User name or password is incorrect" << std::endl;
-            std::cout << "Please try again" << std::endl;
         }
+        std::cout << "User name or password is incorrect" << std::endl;
+
         //closing file
         employee_accounts_in.close();
-        //should not get to this one but clion complains if I dont have it
+        //returning nothing of no user name
         return "";
     } else {
         std::cout << "No users found, please add an account before logging in" << std::endl;
