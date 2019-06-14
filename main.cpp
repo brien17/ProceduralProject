@@ -72,8 +72,8 @@ void print_produced_by_manufacturer(const std::vector<Product> &);
 
 void print_produced_by_item_name(const std::vector<Product> &);
 
-/** The main method for my program that runs the other methods.
- *
+/**
+ * @brief The main method for my program that runs the other methods.
  * @return
  */
 int main() {
@@ -85,7 +85,7 @@ int main() {
 }
 
 /**
- * This method gets input from the user and returns the appropriate response or calls the appropriate
+ * @brief This method gets input from the user and returns the appropriate response or calls the appropriate
  * method based on the input.
  */
 void get_input() {
@@ -102,7 +102,7 @@ void get_input() {
     //looping to get input from the user
     while (!exit) {
         //prompting the user and displaying a menu showing options
-        std::cout << "\n"; //leaving a blank line for readability for the user
+        std::cout << '\n'; //leaving a blank line for readability for the user
         std::cout << "Please select an option" << std::endl;
         std::cout << "1. Produce Items" << std::endl;
         std::cout << "2. Add Employee Account" << std::endl;
@@ -147,7 +147,7 @@ void get_input() {
 }
 
 /**
- * This method allows the user to select a product and specify the number of items produced and then writes that
+ * @brief This method allows the user to select a product and specify the number of items produced and then writes that
  * information along with the serial numbers to a file.
  * @param catalog The catalog of available products
  * @param stats The production number and numbers produced for each item type
@@ -255,7 +255,7 @@ void produce_items(std::vector<Item> &catalog, Stats &stats) {
 }
 
 /**
- * This method allows the user to add a new item that can be produced.
+ * @brief This method allows the user to add a new item that can be produced.
  * @param catalog The catalog of available products
  */
 void add_item(std::vector<Item> &catalog) {
@@ -328,7 +328,7 @@ void add_item(std::vector<Item> &catalog) {
 }
 
 /**
- * This method removes an item from the catalog that is specified by the user.
+ * @brief This method removes an item from the catalog that is specified by the user.
  * @param catalog The catalog of items
  */
 void remove_item(std::vector<Item> &catalog, const std::string &current_user) {
@@ -382,7 +382,7 @@ void remove_item(std::vector<Item> &catalog, const std::string &current_user) {
 }
 
 /**
- * This method gets input from the user and allows them to run other production statistics methods.
+ * @brief This method gets input from the user and allows them to run other production statistics methods.
  * @param stats The production number and numbers produced for each item type
  */
 void production_statistics(const Stats &stats, const std::vector<Item> &catalog) {
@@ -448,8 +448,8 @@ void production_statistics(const Stats &stats, const std::vector<Item> &catalog)
 }
 
 /**
- * This method prompts the user for a serial number and then prints the production number for that serial number to the
- * console.
+ * @brief This method prompts the user for a serial number and then prints the production number for that serial number
+ * to the console.
  */
 void get_production_from_serial(const std::vector<Product> &production_log) {
     //creating a variable to hold the user input
@@ -477,7 +477,7 @@ void get_production_from_serial(const std::vector<Product> &production_log) {
 }
 
 /**
- * This method prints a sorted list of all of the products that are able to printed to the console.
+ * @brief This method prints a sorted list of all of the products that are able to printed to the console.
  */
 void show_available_products_sorted(const std::vector<Item> &catalog) {
     //printing to user
@@ -497,8 +497,8 @@ void show_available_products_sorted(const std::vector<Item> &catalog) {
 }
 
 /**
- * This method allows the user to add a new user name and password, then it encrypts the password and writes the user
- * name and password to a file.
+ * @brief This method allows the user to add a new user name and password, then it encrypts the password and writes the
+ * user name and password to a file.
  */
 void add_employee_account() {
     //clearing buffer
@@ -576,8 +576,8 @@ void add_employee_account() {
 }
 
 /**
- * This method prompts the user for a username and password and if it is correct allows them to log in and returns their
- * user name as a string.
+ * @brief This method prompts the user for a username and password and if it is correct allows them to log in and
+ * returns their user name as a string.
  * @return The user name of the user
  */
 std::string log_in() {
@@ -613,7 +613,7 @@ std::string log_in() {
         //looping to search for the password and user name
         while (getline(employee_accounts_in, line)) {
             //checking if the line contains the searched for serial number
-            if (line.find(search_string, 0) != std::string::npos) {
+            if (line == search_string) {
                 //setting the line matching the looked for serial number to found
                 found = line;
                 //pushing the password off the screen (would like to be able to clear console later)
@@ -624,6 +624,8 @@ std::string log_in() {
                 return user_name;
             }
         }
+        //pushing password off the screen
+        std::cout << std::string(1000, '\n');
         std::cout << "User name or password is incorrect" << std::endl;
 
         //closing file
@@ -637,8 +639,8 @@ std::string log_in() {
 }
 
 /**
- * A method to add leading zeros to an int and return a string that contains the int with
- * leading zeros up to five digits.
+ * @brief A method to add leading zeros to an int and return a string that contains the int with leading zeros up to
+ * five digits.
  * @param num The number to be converted to a string with leading zeros
  * @return the string made from the int
  */
@@ -660,7 +662,7 @@ std::string add_leading_zeros(int num) {
 }
 
 /**
- * This method encrypts the users password, passed as a string and returns the encrypted password as a string.
+ * @brief This method encrypts the users password, passed as a string and returns the encrypted password as a string.
  * @param password The users password
  * @return The encrypted password
  */
@@ -682,7 +684,7 @@ std::string encrypt_password(std::string password) {
 }
 
 /**
- * This is a method to load the catalog from a file and store it in a vector containing structs.
+ * @brief This is a method to load the catalog from a file and store it in a vector containing structs.
  * @return A vector containing structs that store the catalog items
  */
 std::vector<Item> load_catalog() {
@@ -719,7 +721,7 @@ std::vector<Item> load_catalog() {
 }
 
 /**
- * This is a method to load the production log from a file and store it in a vector containing structs.
+ * @brief This is a method to load the production log from a file and store it in a vector containing structs.
  * @return A vector containing structs that store the production log
  */
 std::vector<Product> load_production_log() {
@@ -757,7 +759,7 @@ std::vector<Product> load_production_log() {
 }
 
 /**
- * This is a method to load the production statistics from a file and store them in a struct.
+ * @brief This is a method to load the production statistics from a file and store them in a struct.
  * @return A struct containing production statistics
  */
 Stats load_stats() {
@@ -805,7 +807,7 @@ Stats load_stats() {
 }
 
 /**
- * This method prints the contents of a file that is passed as a parameter.
+ * @brief This method prints the contents of a file that is passed as a parameter.
  * @param file_path The name of the file to be read
  */
 void print_file(const std::string &file_path) {
@@ -827,7 +829,7 @@ void print_file(const std::string &file_path) {
 }
 
 /**
- * This method displays the number of items produced of for a specific manufacturer entered by the user.
+ * @brief This method displays the number of items produced of for a specific manufacturer entered by the user.
  * @param production_log A vector containing structs that store the production log information
  */
 void print_produced_by_manufacturer(const std::vector<Product> &production_log) {
@@ -850,7 +852,7 @@ void print_produced_by_manufacturer(const std::vector<Product> &production_log) 
 }
 
 /**
- * This method displays the number of items produced of a specific item name entered by the user.
+ * @brief This method displays the number of items produced of a specific item name entered by the user.
  * @param production_log A vector containing structs that store the production log information
  */
 void print_produced_by_item_name(const std::vector<Product> &production_log) {
