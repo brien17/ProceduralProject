@@ -229,14 +229,10 @@ void produce_items(std::vector<Item> &catalog, Stats &stats) {
     for (int i = starting_number; i < ending_number; i++) {
         //incrementing total
         stats.total_produced++;
-        //outputting production number
-        //std::cout << "Production Number: " << stats.total_produced;
         //creating serial number
         std::string serial_number =
                 item_to_produce.manufacturer.substr(0, 3) + item_to_produce.item_type_code +
                 add_leading_zeros(num_produced_this_category);
-        //outputting production number
-        //std::cout << " Serial Number: " << serial_number << std::endl;
         //writing manufacturer, name, code, production number, and serial number file
         produced_out << item_to_produce.manufacturer << "," << item_to_produce.item_name << ","
                      << item_to_produce.item_type_code << "," << stats.total_produced
