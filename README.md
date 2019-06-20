@@ -7,3 +7,18 @@ This is a project that I did for my Programming methodologies class. The goal of
 The program was documented using Doxygen style comments, as they are the standard for c++.
 
 ## Getting started
+
+## Built With
+Clion 
+Doxygen
+Hard Word
+stackoverflow.com
+
+## Contributing
+I am not currently seeking any contributions to this project, but feel free to download it and use or modify it as you like.
+
+## License 
+This software is liscensed under the GNU general public license and is free to be modified or used as desried. 
+
+
+
