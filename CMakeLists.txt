@@ -3,4 +3,4 @@ project(ProceduralProject)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ProceduralProject main.cpp)
+add_executable(ProceduralProject main.cpp prototypes.h)

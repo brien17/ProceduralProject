@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "ProceduralProject.pdb"
   "ProceduralProject.exe"
   "ProceduralProject.exe.manifest"
-  "ProceduralProject.lib"
+  "libProceduralProject.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
