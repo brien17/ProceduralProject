@@ -9,7 +9,8 @@ This animation shows a few of the features of my program being used. It shows th
 
 ## Documentation
 
-The program was documented using Doxygen style comments, as they are the standard for C++.
+The program was documented using Doxygen style comments, as they are the standard for C++. Documentation can be seen at: <br>
+https://brien17.github.io/ProceduralProject/html/main_8cpp.html
 
 ## Getting started
 
