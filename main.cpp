@@ -460,7 +460,7 @@ void add_employee_account() {
     //showing the user their user name
     std::cout << "Your user name is " << user_name << std::endl;
     //prompting user
-    std::cout << "Please enter a password (must contain a number, upper and lower case letters, and a symbol"
+    std::cout << "Please enter a password (must contain a number, upper and lower case letters, and no symbols)"
               << std::endl;
     bool good_password = false;
     //creating a string for password
