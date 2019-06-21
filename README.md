@@ -5,7 +5,7 @@ This is a project that I did for my Programming methodologies class. The goal of
 ## Demonstration
 
 This animation shows a few of the features of my program being used. It shows the ability to add new products, produce products, and view information about the products produced. There are many other features of the program 
-![Demonstration of some program functions](Doc/program_gif.gif)<br>
+![Demonstration of some program functions](docs/program_gif.gif)<br>
 
 ## Documentation
 
