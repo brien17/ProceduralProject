@@ -2,7 +2,7 @@
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="SCOPE_TYPE" value="8" />
-    <option name="CUSTOM_SCOPE_NAME" value="Open Files" />
+    <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
@@ -15,7 +15,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="updated formatting" />
+    <list default="true" id="d2e2a743-fd61-43ca-a157-1ed906c80646" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +39,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9967">
-              <caret line="196" selection-start-line="196" selection-end-line="196" />
+            <state relative-caret-position="207">
+              <caret line="738" column="25" lean-forward="true" selection-end-line="815" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductLine.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -72,6 +83,7 @@
       <find>employee_accounts.txt</find>
       <find>ProductionLog.csv</find>
       <find>production_stat</find>
+      <find>MM</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,14 +104,15 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/prototypes.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/ProductLine.csv" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-5" />
-    <option name="y" value="20" />
+    <option name="x" value="-9" />
+    <option name="y" value="-24" />
     <option name="width" value="1925" />
-    <option name="height" value="980" />
+    <option name="height" value="1033" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -191,7 +204,7 @@
       <workItem from="1560113573279" duration="45726000" />
       <workItem from="1560779314100" duration="2362000" />
       <workItem from="1560950838865" duration="1548000" />
-      <workItem from="1560954247099" duration="6756000" />
+      <workItem from="1560954247099" duration="12887000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1557934701054</created>
@@ -445,11 +458,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561058455315</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Added doc folder with doxygen documentation">
+      <created>1561064147294</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1561064147294</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fixed confusing message to users when adding new employee account">
+      <created>1561078217418</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1561078217419</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143644000" />
+    <option name="totallyTimeSpent" value="149775000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -462,25 +489,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12885906" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21529745" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.40509915" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.46033993" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.39235127" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.3286119" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="13" visible="true" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -554,8 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added more comments." />
-    <MESSAGE value="Fixed potential infinite loop in addItems" />
     <MESSAGE value="Updated comments" />
     <MESSAGE value="Made production numbers and serial numbers sequential when producing over multiple runs" />
     <MESSAGE value="added functionality to add new items under the produce items tab" />
@@ -579,7 +603,9 @@
     <MESSAGE value="Formatted lines" />
     <MESSAGE value="Made log_in kick you back to the main menu after unsuccessful attempt to prevent people who do not know their login information being stuck in an infinite loop." />
     <MESSAGE value="updated formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated formatting" />
+    <MESSAGE value="Added doc folder with doxygen documentation" />
+    <MESSAGE value="Fixed confusing message to users when adding new employee account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed confusing message to users when adding new employee account" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/example.txt" />
@@ -607,13 +633,6 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.doxygen">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductLine.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -632,13 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductionLog.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="99999" column="20" selection-start-line="99999" selection-start-column="15" selection-end-line="99999" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/Users.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -649,10 +661,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductionLog.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="6715" lean-forward="true" selection-start-line="6715" selection-end-line="6715" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/ProductLine.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9967">
-          <caret line="196" selection-start-line="196" selection-end-line="196" />
+        <state relative-caret-position="207">
+          <caret line="738" column="25" lean-forward="true" selection-end-line="815" selection-end-column="1" />
         </state>
       </provider>
     </entry>
