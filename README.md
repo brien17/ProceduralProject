@@ -13,6 +13,9 @@ The program was documented using Doxygen style comments, as they are the standar
 
 ## Getting started
 
+The easiest way to see this program running is to run it at my repl available here: https://repl.it/@cbrien17/ProceduralProject<br>
+
+
 ## Built With
 
 * Clion 
