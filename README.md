@@ -9,7 +9,7 @@ This animation shows a few of the features of my program being used. It shows th
 
 ## Documentation
 
-The program was documented using Doxygen style comments, as they are the standard for c++.
+The program was documented using Doxygen style comments, as they are the standard for C++.
 
 ## Getting started
 
@@ -21,7 +21,7 @@ The easiest way to see this program running is to run it at my repl available he
 * Clion 
 * Doxygen
 * C++
-* Hard Word
+* Hard Work
 * stackoverflow.com
 
 ## Contributing
@@ -41,6 +41,6 @@ This software is licensed under the GNU general public license and is free to be
 
 ## Key Programming Concepts Utilized
 
-The main learning goal of this program was to understand more about procedural programming, by making a program that did not utilize any classes. Procedural programming is very different from object-oriented programing (OOP) because you have to use functions to accomplish everything that you want to do instead of objects. As a result, procedural design is a top-down approach instead of OOP'sbottom-up approach. 
+The main learning goal of this program was to understand more about procedural programming, by making a program that did not utilize any classes. Procedural programming is very different from object-oriented programing (OOP) because you have to use functions to accomplish everything that you want to do instead of objects. As a result, procedural design is a top-down approach instead of OOP's bottom-up approach. 
 
 
